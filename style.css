@@ -1,0 +1,161 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #333;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    min-width: 400px;
+    color: #ccc;
+}
+
+.container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 400px;
+    background: linear-gradient(135deg, rgb(1, 45, 95), rgb(3, 145, 145));
+    border-radius: 10px;
+    padding-top: 30px;
+}
+
+.search {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 22px;
+}
+
+.search input {
+   width: 100%;
+   line-height: 20px;
+   padding: 5px;
+   background: none;
+   outline: none;
+   border: none;
+   border-bottom: 1px solid #CCC;
+   font-size: 20px;
+   color: #ccc
+}
+
+.search input::placeholder {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #ccc;
+    font-size: 0.8em;
+    opacity: 0.7;
+}
+
+.search button {
+    position: absolute;
+    right: 0%;
+    bottom: 47%;
+    border-radius: 50%;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.search button:hover {
+    transform: scale(1.1);
+}
+
+button i {
+    transform: scale(1.5);
+    color: #ccc;
+}
+
+
+.city {
+    margin-bottom: 10px;
+}
+
+.city h1 {
+    text-align: center;
+}
+
+.weather {
+    display: none;
+    flex-direction: column;
+}
+
+
+#today0 img {
+    width: 12rem;
+    transform: translateX(-35px);
+    
+}
+
+.today {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.info {
+    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.info .temp {
+    font-size: 3rem;;
+}
+
+.info .date {
+    margin-bottom: -25px;
+}
+
+.info .condition {
+    margin-top: -25px;
+}
+
+.details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -25px;
+}
+
+.details i {
+    font-size: 3rem;
+    margin-right: 10px;
+}
+
+.details p {
+    font-size: 1.5rem;;
+}
+
+.forecast {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    max-width: 100%;
+}
+
+#today1 img, #today2 img, #today3 img {
+    width: 4rem;
+    margin-bottom: -10px;
+}
+
+
+.forecast p {
+    text-align: center;
+}
+
+.error {
+    display: block;
+    position: absolute;
+    font-size: 12px;
+    top: 23px;
+    right: 0;
+    font-weight: 500;
+}
