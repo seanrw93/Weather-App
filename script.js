@@ -4,7 +4,7 @@ const API_URL = "https://api.openweathermap.org/data/2.5/forecast?q="
 const searchBtn = document.querySelector(".search button")
 const searchBar = document.querySelector(".search input")
 
-const getWeather = (city) => {
+const getWeather = city => {
     fetch(API_URL + city + `&appid=${API_KEY}` + `&units=metric`)
     .then(response => response.json())
     .then(json => {
@@ -22,17 +22,8 @@ const displayWeather = json => {
         document.querySelector(".temp").innerHTML = Math.round(json.list[0].main.temp) + "°C"
         document.querySelector(".condition").innerHTML = (json.list[0].weather[0].description).charAt(0).toUpperCase() + (json.list[0].weather[0].description).slice(1)
         document.querySelector(".wind").innerHTML = (json.list[0].wind.speed).toFixed(1) + " km/h"
-        
-        //Dates for the next 3 days
-        const divCount = 3 
-        for (let i = 0; i < divCount; i++) {
-            let newDate = new Date(currentDate.getTime())
-            newDate.setDate(newDate.getDate() + i)
-            
-            document.getElementsByClassName('day' + (i + 1)).innerHTML = `${newDate.getDate() + 1}/${newDate.getMonth() + 1}`
-        }
 
-        //Setting the weather icons for the next 3 days
+        //Setting the dates and weather icons for the next 3 days
         const icons = document.querySelectorAll(".weather-icon")
         icons.forEach(icon => {
             switch (icon.id) {
