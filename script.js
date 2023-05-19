@@ -25,57 +25,40 @@ const displayWeather = json => {
 
         //Setting the dates and weather icons for the next 3 days
         const icons = document.querySelectorAll(".weather-icon")
-        icons.forEach(icon => {
+        icons.forEach((icon, index) => {
+            
+            const nextDayIndex = json.list.findIndex(item => {
+                        const itemDateTime = new Date(item.dt_txt)
+                        const nextDay = new Date(currentDate.getTime())
+                        nextDay.setDate(currentDate.getDate() + (index + 1))
+                        nextDay.setHours(15, 0, 0, 0)
+                
+                        return itemDateTime.getTime() === nextDay.getTime()   
+                    })
+            
             switch (icon.id) {
                 case "today0": {
                     icon.innerHTML = `<img src="https://openweathermap.org/img/wn/${json.list[0].weather[0].icon}@4x.png">`
                     break;
                 }
-                case "today1": {
-                    const tomorrowMiddayIndex = json.list.findIndex(item => {
-                        const itemDateTime = new Date(item.dt_txt)
-                        const tomorrowMidday = new Date(currentDate.getTime())
-                        tomorrowMidday.setDate(currentDate.getDate() + 1)
-                        tomorrowMidday.setHours(15, 0, 0, 0)
-                
-                        return itemDateTime.getTime() === tomorrowMidday.getTime()   
-                    })
-                    console.log(tomorrowMiddayIndex)
+                case "today1": 
                     if (tomorrowMiddayIndex !== -1) {
-                        icon.innerHTML = `<img src="https://openweathermap.org/img/wn/${json.list[tomorrowMiddayIndex].weather[0].icon}@2x.png">
+                        icon.innerHTML = `<img src="https://openweathermap.org/img/wn/${json.list[nextDayIndex].weather[0].icon}@2x.png">
                                           <p class="day1">${currentDate.getDate() + 1}/${currentDate.getMonth() + 1}</p>`
                     }
                     break;
                 }
-                case "today2": {
-                    const tomorrowMiddayIndex = json.list.findIndex(item => {
-                        const itemDateTime = new Date(item.dt_txt)
-                        const tomorrowMidday = new Date(currentDate.getTime())
-                        tomorrowMidday.setDate(currentDate.getDate() + 2)
-                        tomorrowMidday.setHours(15, 0, 0, 0)
-                
-                        return itemDateTime.getTime() === tomorrowMidday.getTime()   
-                    })
-                    console.log(tomorrowMiddayIndex)
+                case "today2":                   
                     if (tomorrowMiddayIndex !== -1) {
-                        icon.innerHTML = `<img src="https://openweathermap.org/img/wn/${json.list[tomorrowMiddayIndex].weather[0].icon}@2x.png">
-                                          <p class="day1">${currentDate.getDate() + 2}/${currentDate.getMonth() + 1}</p>`
+                        icon.innerHTML = `<img src="https://openweathermap.org/img/wn/${json.list[nextDayIndex].weather[0].icon}@2x.png">
+                                          <p class="day2">${currentDate.getDate() + 2}/${currentDate.getMonth() + 1}</p>`
                     }
                     break;
                 }  
-                case "today3": {
-                    const tomorrowMiddayIndex = json.list.findIndex(item => {
-                        const itemDateTime = new Date(item.dt_txt)
-                        const tomorrowMidday = new Date(currentDate.getTime())
-                        tomorrowMidday.setDate(currentDate.getDate() + 3)
-                        tomorrowMidday.setHours(15, 0, 0, 0)
-                
-                        return itemDateTime.getTime() === tomorrowMidday.getTime()   
-                    })
-                    console.log(tomorrowMiddayIndex)
+                case "today3": 
                     if (tomorrowMiddayIndex !== -1) {
-                        icon.innerHTML = `<img src="https://openweathermap.org/img/wn/${json.list[tomorrowMiddayIndex].weather[0].icon}@2x.png">
-                                          <p class="day1">${currentDate.getDate() + 3}/${currentDate.getMonth() + 1}</p>`
+                        icon.innerHTML = `<img src="https://openweathermap.org/img/wn/${json.list[nextDayIndex].weather[0].icon}@2x.png">
+                                          <p class="day3">${currentDate.getDate() + 3}/${currentDate.getMonth() + 1}</p>`
                     }
                     break;
                 }
