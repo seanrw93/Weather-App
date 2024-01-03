@@ -37,31 +37,27 @@ const displayWeather = json => {
                     })
             
             switch (icon.id) {
-                case "today0": {
+                case "today0": 
                     icon.innerHTML = `<img src="https://openweathermap.org/img/wn/${json.list[0].weather[0].icon}@4x.png">`
                     break;
-                }
                 case "today1": 
                     if (tomorrowMiddayIndex !== -1) {
                         icon.innerHTML = `<img src="https://openweathermap.org/img/wn/${json.list[nextDayIndex].weather[0].icon}@2x.png">
                                           <p class="day1">${currentDate.getDate() + 1}/${currentDate.getMonth() + 1}</p>`
                     }
                     break;
-                }
                 case "today2":                   
                     if (tomorrowMiddayIndex !== -1) {
                         icon.innerHTML = `<img src="https://openweathermap.org/img/wn/${json.list[nextDayIndex].weather[0].icon}@2x.png">
                                           <p class="day2">${currentDate.getDate() + 2}/${currentDate.getMonth() + 1}</p>`
                     }
                     break;
-                }  
                 case "today3": 
                     if (tomorrowMiddayIndex !== -1) {
                         icon.innerHTML = `<img src="https://openweathermap.org/img/wn/${json.list[nextDayIndex].weather[0].icon}@2x.png">
                                           <p class="day3">${currentDate.getDate() + 3}/${currentDate.getMonth() + 1}</p>`
                     }
                     break;
-                }
             }
         })
         document.querySelector(".weather").style.display = "flex"
